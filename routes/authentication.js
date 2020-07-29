@@ -69,7 +69,11 @@ router.post('/sign-up', (req, res, next) => {
 router.get('/authentication/confirm-email', (req, res, next) => {
   const token = req.query.token;
   console.log('im the id', req.session._id);
-  User.findOneAndUpdate({ confirmationToken: token }, { status: 'active' })
+  User.findOneAndUpdate(
+    { confirmationToken: token },
+    { status: 'active' },
+    { new: true }
+  )
     .then(user => {
       console.log('im the user', user);
       res.render('confirmation', { user });
