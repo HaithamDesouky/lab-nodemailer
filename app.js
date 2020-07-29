@@ -2,7 +2,6 @@ const { join } = require('path');
 const express = require('express');
 const logger = require('morgan');
 const sassMiddleware = require('node-sass-middleware');
-
 const mongoose = require('mongoose');
 const expressSession = require('express-session');
 const connectMongo = require('connect-mongo');
@@ -25,7 +24,8 @@ app.use(
   sassMiddleware({
     src: join(__dirname, 'public'),
     dest: join(__dirname, 'public'),
-    outputStyle: process.env.NODE_ENV === 'development' ? 'nested' : 'compressed',
+    outputStyle:
+      process.env.NODE_ENV === 'development' ? 'nested' : 'compressed',
     sourceMap: false,
     force: true
   })
