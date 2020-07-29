@@ -53,7 +53,25 @@ router.post('/sign-up', (req, res, next) => {
           to: email,
           subject: 'An email from haitham',
           text: 'Lab',
-          html: `<a href="http://localhost:3000/authentication/confirm-email?token=${token}></a>`
+          html: `<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <title>{{title}}</title>
+  <style>body{
+    background-color: red;
+  }
+  </style>
+  </head>
+  <body style="background-color: blanchedalmond;">
+   <h1>Thank you for signing up</h1>
+
+   <h2>Please click below to confirm</h2>
+      <a href="http://localhost:3000/authentication/confirm-email?token=${token}">Click to confirm</a>
+   
+  </body>
+</html>`
+          //  `<a href="http://localhost:3000/authentication/confirm-email?token=${token}></a>`
         })
         .then(result => {
           console.log('Email was sent');
